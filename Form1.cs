@@ -39,6 +39,7 @@ namespace RSI_Clicker
             var b = (Button)sender;
             test++;
             b.Text += "pressed" + test;
+            mouse_event();
         }
     }
 }

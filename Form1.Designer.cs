@@ -28,11 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.ClicksLabel = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // button1
@@ -64,11 +62,6 @@
             this.ClicksLabel.TabIndex = 2;
             this.ClicksLabel.Text = "Clicks:";
             // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // RSIClick
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -90,7 +83,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label ClicksLabel;
-        private System.Windows.Forms.Timer timer1;
     }
 }
 

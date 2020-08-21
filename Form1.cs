@@ -32,13 +32,8 @@ namespace RSI_Clicker
         {
             var b = (Button)sender;
             test++;
-            ClicksLabel.Text += test;
-            
+            ClicksLabel.Text += test;  
         }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            AutoClick.CheckIfCursorMoved();
-        }
+        
     }
 }

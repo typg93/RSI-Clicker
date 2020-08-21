@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,16 +10,26 @@ namespace RSI_Clicker
 {
     class AutoClicker
     {
-        int mouseX = 0;
-        int mouseY = 0;
+        Point oldMousePos = new Point(0, 0);
+        bool clicked = false;
 
-        public void CheckIfCursorMoved(int oldX, int oldY)
+        User32Wrapper Mouse = new User32Wrapper();
+
+        public void CheckIfCursorMoved()
         {
-            mouseX = Cursor.Position.X;
-            mouseY = Cursor.Position.Y;
-            if (oldX == mouseX && oldY == mouseY){
-                //do mouse click
+            if (oldMousePos == Cursor.Position) {
+                if (!clicked)
+                {
+                    Mouse.DoLeftMouseClick();
+                    clicked = true;
+                }
             }
+
+            else {
+                oldMousePos = Cursor.Position;
+                clicked = false;
+            }
+            
         }
 
     }

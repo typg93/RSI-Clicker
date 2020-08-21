@@ -14,7 +14,7 @@ namespace RSI_Clicker
     public partial class RSIClick : Form
     {
         
-        User32Wrapper Mouse = new User32Wrapper();
+        AutoClicker AutoClick = new AutoClicker();
         int test = 0;
         
         public RSIClick()
@@ -33,12 +33,12 @@ namespace RSI_Clicker
             var b = (Button)sender;
             test++;
             ClicksLabel.Text += test;
-            Mouse.DoLeftMouseClick();
+            
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-
+            AutoClick.CheckIfCursorMoved();
         }
     }
 }

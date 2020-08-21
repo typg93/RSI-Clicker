@@ -28,13 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.ClicksLabel = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(425, 177);
+            this.button1.Location = new System.Drawing.Point(419, 227);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(223, 101);
             this.button1.TabIndex = 0;
@@ -52,17 +55,32 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button_Click);
             // 
+            // ClicksLabel
+            // 
+            this.ClicksLabel.AutoSize = true;
+            this.ClicksLabel.Location = new System.Drawing.Point(355, 99);
+            this.ClicksLabel.Name = "ClicksLabel";
+            this.ClicksLabel.Size = new System.Drawing.Size(54, 20);
+            this.ClicksLabel.TabIndex = 2;
+            this.ClicksLabel.Text = "Clicks:";
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // RSIClick
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ClicksLabel);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "RSIClick";
             this.Text = "RSI Clicker";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -70,6 +88,8 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label ClicksLabel;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

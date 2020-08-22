@@ -5,16 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace RSI_Clicker
 {
     class AutoClicker
     {
         bool clicked = false; //click only once when mouse has stopped
+        private const int TimeStopBeforeClick = 100; 
         Point oldMousePos = new Point(0, 0);
 
-        Timer clickTimer = new Timer() { Enabled = true, Interval = 100 };        
-        User32Wrapper Mouse = new User32Wrapper();
+        Timer clickTimer = new Timer() { Enabled = true, Interval = TimeStopBeforeClick };        
+        User32Wrapper MouseFunction = new User32Wrapper();
 
         public AutoClicker()
         {
@@ -29,16 +31,18 @@ namespace RSI_Clicker
 
         public void CheckIfCursorMoved()
         {
-            if (oldMousePos == Cursor.Position) {
+            
+            if (oldMousePos == System.Windows.Forms.Cursor.Position &&
+                Mouse.LeftButton == MouseButtonState.Released) {
                 if (!clicked)
                 {
-                    Mouse.DoLeftMouseClick();
+                    MouseFunction.DoLeftMouseClick();
                     clicked = true;
                 }
             }
 
             else {
-                oldMousePos = Cursor.Position;
+                oldMousePos = System.Windows.Forms.Cursor.Position;
                 clicked = false;
             }
             

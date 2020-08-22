@@ -34,6 +34,14 @@ namespace RSI_Clicker
             test++;
             ClicksLabel.Text += test;  
         }
-        
+
+        private void RSIClick_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.ToString() == "R")
+            {
+                ClicksLabel.Text = "reset";
+            }
+            
+        }
     }
 }

@@ -13,13 +13,16 @@ namespace RSI_Clicker
 {
     public partial class RSIClick : Form
     {
-        
-        AutoClicker AutoClick = new AutoClicker();
+        readonly AutoClicker autoClick = new AutoClicker();
+        readonly GlobalHotKey ghk;
         int test = 0;
-        
+        bool autoClickOn = false;
+
         public RSIClick()
         {
             InitializeComponent();
+            ghk = new GlobalHotKey(this, 0x0000, Keys.F10);
+            ghk.Register();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -27,21 +30,46 @@ namespace RSI_Clicker
             
         }
 
-         
         private void Button_Click(object sender, EventArgs e)
         {
-            var b = (Button)sender;
             test++;
             ClicksLabel.Text += test;  
         }
 
-        private void RSIClick_KeyDown(object sender, KeyEventArgs e)
+        #region AutoClick HotKey Activate
+        protected override void WndProc(ref Message m)
         {
-            if (e.KeyCode.ToString() == "R")
+            if (m.Msg == GlobalHotKey.Constants.WM_HOTKEY_MSG_ID)
             {
-                ClicksLabel.Text = "reset";
+                AutoClickSwitch();
             }
-            
+            base.WndProc(ref m);
         }
+#endregion
+        #region AutoClick Switch Button
+        private void AutoClickButton_Click(object sender, EventArgs e)
+        {
+            AutoClickSwitch();
+        }
+
+        private void AutoClickSwitch()
+        {
+            //turn OFF autoclicking
+            if (autoClickOn)
+            {
+                autoClickOn = false;
+                autoClick.TurnOffClickTimer();
+                AutoClickButton.Text = "turn ON auto clicker";
+            }
+            //turn ON autoclicking
+            else
+            {
+                autoClickOn = true;
+                autoClick.TurnOnClickTimer();
+                AutoClickButton.Text = "turn OFF auto clicker";
+            }
+        }
+        #endregion
+
     }
 }

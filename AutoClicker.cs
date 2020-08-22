@@ -23,17 +23,27 @@ namespace RSI_Clicker
             this.clickTimer.Tick += OnClickTimerTick; 
         }
 
-       
+        public void TurnOffClickTimer()
+        {
+            clickTimer.Stop();
+        }
+
+        public void TurnOnClickTimer()
+        {
+            clickTimer.Start();
+        }
+
         public void OnClickTimerTick(object source, EventArgs e)
         {
             CheckIfCursorMoved();
         }
 
+
+
         public void CheckIfCursorMoved()
         {
             
-            if (oldMousePos == System.Windows.Forms.Cursor.Position &&
-                Mouse.LeftButton == MouseButtonState.Released) {
+            if (oldMousePos == System.Windows.Forms.Cursor.Position) {
                 if (!clicked)
                 {
                     MouseFunction.DoLeftMouseClick();

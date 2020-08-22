@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 
 namespace RSI_Clicker
 {
-    public class GlobalHotkey
+    public class GlobalHotKey
     {
         private int modifier;
         private int key;
@@ -16,9 +16,16 @@ namespace RSI_Clicker
             public const int Alt = 0x0001;
             public const int Shift = 0x0004;
             public const int Win = 0x0008;
+
+            //windows message id for hotkey
+            public const int WM_HOTKEY_MSG_ID = 0x0312;
         }
 
-        public GlobalHotkey(Form form, int modifier, Keys key)
+        public GlobalHotKey(Form form)
+        {
+            this.hWnd = form.Handle;
+        }
+        public GlobalHotKey(Form form, int modifier, Keys key)
         {
             this.key = (int)key;
             this.hWnd = form.Handle;

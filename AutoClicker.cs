@@ -13,7 +13,7 @@ namespace RSI_Clicker
     {
         bool clicked = false; //click only once when mouse has stopped
         private const int TimeStopBeforeClick = 100; 
-        Point oldMousePos = new Point(0, 0);
+        Point oldMousePos = new Point(0, 0); 
 
         Timer clickTimer = new Timer() { Enabled = true, Interval = TimeStopBeforeClick };        
         User32Wrapper MouseFunction = new User32Wrapper();
@@ -39,7 +39,7 @@ namespace RSI_Clicker
         }
 
 
-
+//Checks if the previous position is different than current position every 100ms
         public void CheckIfCursorMoved()
         {
             
